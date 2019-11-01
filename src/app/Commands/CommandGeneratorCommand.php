@@ -3,6 +3,7 @@
 namespace HaiCS\Laravel\Generator\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use \Exception;
 
@@ -13,7 +14,7 @@ class CommandGeneratorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:package:command {name}';
+    protected $signature = 'make:package:command {packageName} {commandName}';
 
     /**
      * The console command description.
@@ -39,21 +40,22 @@ class CommandGeneratorCommand extends Command
      */
     public function handle()
     {
-        $name = $this->argument('name');
-        $stub = $this->getStub();
-        $this->makeCommand($name, $stub);
+        $package_name = $this->argument('packageName');
+        $command_name = $this->argument('commandName');
+        $stub         = $this->getStub();
+        $this->makeCommand($package_name, $command_name, $stub);
         $this->info('Command generate successful');
     }
 
     protected function getStub()
     {
-        return file_get_contents(__DIR__ . '/../../../stubs/Command.stub');
+        return Storage::disk('root')->get('modules/generator/stubs/Command.stub');
     }
 
-    protected function makeCommand($name, $stub)
+    protected function makeCommand($package_name, $command_name, $stub)
     {
-        $class_name       = Str::studly($name);
+        $class_name       = Str::studly($command_name);
         $command_template = str_replace('{{name}}', $class_name, $stub);
-        file_put_contents(__DIR__ . '/../../../../test/' . $class_name . 'Command.php', $command_template);
+        Storage::disk('root')->put('modules/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php', $command_template);
     }
 }
