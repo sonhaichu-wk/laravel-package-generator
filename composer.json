@@ -1,0 +1,26 @@
+{
+    "name": "sonhaichu/generator",
+    "description": "File generator for laravel package",
+    "authors": [
+        {
+            "name": "sonhaichu",
+            "email": "sonhaichu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [],
+        "psr-4": {
+            "HaiCS\\Laravel\\Generator\\": "src/app/"
+        }
+    },
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HaiCS\\Laravel\\Generator\\Providers\\GeneratorServiceProvider"
+            ]
+        }
+    }
+}
