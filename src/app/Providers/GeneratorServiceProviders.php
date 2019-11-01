@@ -3,6 +3,7 @@
 namespace HaiCS\Laravel\Generator\Providers;
 
 use HaiCS\Laravel\Generator\Commands\CreateCommandCommand;
+use HaiCS\Laravel\Generator\Commands\CreatePackageCommand;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -40,6 +41,7 @@ class GeneratorServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CreateCommandCommand::class,
+                CreatePackageCommand::class,
             ]);
         }
     }
