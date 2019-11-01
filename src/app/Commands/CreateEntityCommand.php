@@ -53,7 +53,7 @@ class CreateEntityCommand extends Command
      */
     protected function getStub()
     {
-        return app(Filesystem::class)->get(config('generator.module.root') . '/generator/stubs/Entity.stub');
+        return app(Filesystem::class)->get(config('generator.stubs.entity'));
     }
 
     /**
