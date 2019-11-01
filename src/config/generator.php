@@ -5,7 +5,8 @@ return [
     'disk'   => 'root',
 
     'module' => [
-        'root' => 'modules',
+        'root'        => 'modules',
+        'scaffolding' => 'generator/scaffolding',
     ],
 
 ];
