@@ -47,11 +47,21 @@ class CreateCommandCommand extends Command
         $this->info('Command generate successful');
     }
 
+    /**
+     * Get content in stub file
+     *
+     * @return string
+     */
     protected function getStub()
     {
         return Storage::disk(config('generator.disk'))->get(config('generator.module.root') . '/generator/stubs/Command.stub');
     }
 
+    /**
+     * Create command file
+     *
+     * @return void
+     */
     protected function makeCommand($package_name, $command_name, $stub)
     {
         $class_name       = Str::studly($command_name);

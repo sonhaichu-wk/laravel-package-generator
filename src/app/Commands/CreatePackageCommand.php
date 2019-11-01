@@ -3,6 +3,8 @@
 namespace HaiCS\Laravel\Generator\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class CreatePackageCommand extends Command
 {
@@ -38,6 +40,20 @@ class CreatePackageCommand extends Command
     public function handle()
     {
         $name = $this->argument('name');
-        dd($name);
+        $this->makePackage($name);
+        $this->info('Package generate successful');
+    }
+
+    /**
+     * Create package scaffolding folder
+     *
+     * @return void
+     */
+    protected function makePackage($name)
+    {
+        $package_name = Str::snake($name);
+        $dir          = config('generator.module.root') . '/' . config('generator.module.scaffolding');
+        $dest         = config('generator.module.root') . '/' . $package_name;
+        app(Filesystem::class)->copyDirectory($dir, $dest);
     }
 }
