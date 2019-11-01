@@ -57,7 +57,7 @@ class CreateEntityCommand extends Command
     }
 
     /**
-     * Create command file
+     * Create entity file
      *
      * @return void
      */
