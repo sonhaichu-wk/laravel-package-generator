@@ -2,7 +2,7 @@
 
 namespace HaiCS\Laravel\Generator\Providers;
 
-use HaiCS\Laravel\Generator\Commands\CommandGenerator;
+use HaiCS\Laravel\Generator\Commands\CommandGeneratorCommand;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -35,11 +35,11 @@ class GeneratorServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerCommands()
+    protected function registerCommands()
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                CommandGenerator::class,
+                CommandGeneratorCommand::class,
             ]);
         }
     }
