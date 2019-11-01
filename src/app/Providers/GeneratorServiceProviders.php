@@ -2,6 +2,7 @@
 
 namespace HaiCS\Laravel\Generator\Providers;
 
+use HaiCS\Laravel\Generator\Commands\CommandGenerator;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Support\ServiceProvider;
 class GeneratorServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services
+     * Bootstrap any package services
      *
      * @return void
      */
@@ -20,12 +21,26 @@ class GeneratorServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register any application services
+     * Register any package services
      *
      * @return void
      */
     public function register()
     {
+        $this->registerCommands();
+    }
 
+    /**
+     * Register any package commands
+     *
+     * @return void
+     */
+    private function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                CommandGenerator::class,
+            ]);
+        }
     }
 }
