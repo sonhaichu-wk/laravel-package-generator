@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use \Exception;
 
-class CommandGeneratorCommand extends Command
+class CreateCommandCommand extends Command
 {
     /**
      * The name and signature of the console command.
