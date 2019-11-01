@@ -17,7 +17,7 @@ class GeneratorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->publishConfig();
     }
 
     /**
@@ -42,5 +42,12 @@ class GeneratorServiceProvider extends ServiceProvider
                 CommandGeneratorCommand::class,
             ]);
         }
+    }
+
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__ . '/../../config/generator.php' => config_path('generator.php'),
+        ]);
     }
 }

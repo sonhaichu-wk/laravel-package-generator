@@ -49,13 +49,13 @@ class CommandGeneratorCommand extends Command
 
     protected function getStub()
     {
-        return Storage::disk('root')->get('modules/generator/stubs/Command.stub');
+        return Storage::disk(config('generator.disk'))->get(config('generator.module.root') . '/generator/stubs/Command.stub');
     }
 
     protected function makeCommand($package_name, $command_name, $stub)
     {
         $class_name       = Str::studly($command_name);
         $command_template = str_replace('{{name}}', $class_name, $stub);
-        Storage::disk('root')->put('modules/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php', $command_template);
+        Storage::disk(config('generator.disk'))->put(config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php', $command_template);
     }
 }
