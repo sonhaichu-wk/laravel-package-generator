@@ -1,0 +1,21 @@
+<?php
+
+namespace HaiCS\Laravel\Generator\Test;
+
+use HaiCS\Laravel\Generator\Providers\GeneratorServiceProvider;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
+
+class TestCase extends OrchestraTestCase
+{
+    /**
+     * Load package service provider
+     *
+     * @param  \Illuminate\Foundation\Application $app
+     *
+     * @return HaiCS\Laravel\Generator\Providers\GeneratorServiceProvider
+     */
+    protected function getPackageProviders($app)
+    {
+        return [GeneratorServiceProvider::class];
+    }
+}
