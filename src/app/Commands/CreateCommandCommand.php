@@ -44,8 +44,17 @@ class CreateCommandCommand extends Command
         $package_name = $this->argument('packageName');
         $command_name = $this->argument('commandName');
         $stub         = $this->getStub();
-        $this->makeCommand($package_name, $command_name, $stub);
+
+        try {
+            $result = $this->makeCommand($package_name, $command_name, $stub);
+        } catch (Exception $e) {
+            $this->error($e->getMessage());
+            return 1;
+        }
+
         $this->info('Command generate successful');
+
+        return 0;
     }
 
     /**
@@ -67,6 +76,13 @@ class CreateCommandCommand extends Command
     {
         $class_name       = Str::studly($command_name);
         $command_template = str_replace('{{name}}', $class_name, $stub);
-        Storage::disk(config('generator.disk'))->put(config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php', $command_template);
+        $file_path        = config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php';
+        $file_system      = app(Filesystem::class);
+
+        if ($file_system->isFile($file_path)) {
+            throw new Exception('Command already existed');
+        }
+
+        $file_system->put($file_path, $command_template);
     }
 }
