@@ -1,0 +1,16 @@
+<?php
+
+namespace HaiCS\Laravel\Generator\Test;
+
+use HaiCS\Laravel\Generator\Test\TestCase;
+
+class {{name}}Test extends TestCase
+{
+    /**
+     * @test
+     */
+    public function example()
+    {
+        $this->assertTrue(true);
+    }
+}
