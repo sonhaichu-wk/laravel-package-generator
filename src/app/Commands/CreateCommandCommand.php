@@ -3,6 +3,7 @@
 namespace HaiCS\Laravel\Generator\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use \Exception;
@@ -54,7 +55,7 @@ class CreateCommandCommand extends Command
      */
     protected function getStub()
     {
-        return Storage::disk(config('generator.disk'))->get(config('generator.module.root') . '/generator/stubs/Command.stub');
+        return app(Filesystem::class)->get(config('generator.stubs.command'));
     }
 
     /**

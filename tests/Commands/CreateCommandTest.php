@@ -12,8 +12,9 @@ class CreateCommandTest extends TestCase
     /**
      * @test
      */
-    public function example()
+    public function can_create_command_file()
     {
-        $this->assertTrue(true);
+        $this->artisan('make:package:command new_package test')
+            ->expectsOutput('Command generate successful');
     }
 }
