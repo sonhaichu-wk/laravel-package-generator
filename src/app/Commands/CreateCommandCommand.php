@@ -76,7 +76,7 @@ class CreateCommandCommand extends Command
     {
         $class_name       = Str::studly($command_name);
         $command_template = str_replace('{{name}}', $class_name, $stub);
-        $file_path        = config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php';
+        $file_path        = base_path() . '/' . config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php';
         $file_system      = app(Filesystem::class);
 
         if ($file_system->isFile($file_path)) {

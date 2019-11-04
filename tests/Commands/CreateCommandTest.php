@@ -2,66 +2,31 @@
 
 namespace HaiCS\Laravel\Generator\Test\Commands;
 
-use HaiCS\Laravel\Generator\Test\TestCase;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Str;
+use HaiCS\Laravel\Generator\Test\Commands\CommandTestCase;
 
-/**
- * Create Command test suite
- */
-class CreateCommandTest extends TestCase
+class CreateCommandTest extends CommandTestCase
 {
-    /**
-     * @var string
-     */
-    protected $packageName;
-
-    /**
-     * @var string
-     */
-    protected $commandName;
-
-    /**
-     * This method is called before each test.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->packageName = 'new_package';
-        $this->commandName = 'test';
-    }
-
-    /**
-     * This method is called after each test.
-     */
-    // protected function tearDown(): void
-    // {
-    //     $file_system  = app(Filesystem::class);
-    //     $package_path = base_path() . '/' . config('generator.module.root') . '/' . $this->packageName;
-
-    //     if ($file_system->isDirectory($package_path)) {
-    //         $file_system->deleteDirectory($package_path);
-    //     }
-    // }
-
     /**
      * Get command to run
      *
      * @return string
      */
-    protected function getCommand()
+    protected function getCreateCommandCommand($command_name)
     {
-        return 'make:package:command ' . $this->packageName . ' ' . $this->commandName;
+        return 'make:package:command ' . $this->packageName . ' ' . $command_name;
     }
 
     /**
      * @test
      */
-    public function can_create_command_file()
+    public function can_create_command()
     {
-        $this->artisan($this->getCommand())
+        $command_name = 'test';
+
+        $this->artisan($this->getCreatePackageCommand())
+            ->assertExitCode(0);
+
+        $this->artisan($this->getCreateCommandCommand($command_name))
             ->expectsOutput('Command generate successful')
             ->assertExitCode(0);
     }
@@ -69,25 +34,19 @@ class CreateCommandTest extends TestCase
     /**
      * @test
      */
-    // public function cannot_create_command_file_if_command_already_existed()
-    // {
-    //     // $this->artisan($this->getCommand())
-    //     // ->expectsOutput('Command generate successful')
-    //     // ->assertExitCode(0);
+    public function cannot_create_command_file_if_command_already_existed()
+    {
+        $command_name = 'test';
 
-    //     Artisan::call('make:package:command', [
-    //         'packageName' => $this->packageName,
-    //         'commandName' => $this->commandName,
-    //     ]);
-    //     // $class_name  = Str::studly($this->commandName);
-    //     // $file_path   = base_path() . '/' . config('generator.module.root') . '/' . $this->packageName . '/src/app/Commands/' . $class_name . 'Command.php';
-    //     // $file_system = app(Filesystem::class);
+        $this->artisan($this->getCreatePackageCommand())
+            ->assertExitCode(0);
 
-    //     // // dd($file_path);
-    //     // dd($file_system->isFile($file_path));
+        $this->artisan($this->getCreateCommandCommand($command_name))
+            ->expectsOutput('Command generate successful')
+            ->assertExitCode(0);
 
-    //     $this->artisan($this->getCommand())
-    //         ->expectsOutput('Command already existed')
-    //         ->assertExitCode(1);
-    // }
+        $this->artisan($this->getCreateCommandCommand($command_name))
+            ->expectsOutput('Command already existed')
+            ->assertExitCode(1);
+    }
 }
