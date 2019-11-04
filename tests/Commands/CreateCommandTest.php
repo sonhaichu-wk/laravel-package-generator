@@ -42,7 +42,7 @@ class CreateCommandTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateCommandCommand($command_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutput('Test generate successful')
             ->assertExitCode(0);
     }
 
@@ -62,6 +62,18 @@ class CreateCommandTest extends CommandTestCase
 
         $this->artisan($this->getCreateCommandCommand($command_name))
             ->expectsOutput('Command already existed')
+            ->assertExitCode(1);
+    }
+
+    /**
+     * @test
+     */
+    public function cannot_create_command_file_if_package_does_not_exist()
+    {
+        $command_name = 'test';
+
+        $this->artisan($this->getCreateCommandCommand($command_name))
+            ->expectsOutput('Package does not exist')
             ->assertExitCode(1);
     }
 }

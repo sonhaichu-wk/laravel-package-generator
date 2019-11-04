@@ -46,7 +46,7 @@ class CreateCommandCommand extends Command
         $stub          = $this->getStub();
 
         try {
-            $result = $this->makeCommand($package_name, $command_names, $stub);
+            $this->makeCommand($package_name, $command_names, $stub);
         } catch (Exception $e) {
             $this->error($e->getMessage());
             return 1;
@@ -77,7 +77,12 @@ class CreateCommandCommand extends Command
         $class_name          = Str::studly($command_names->pop());
         $command_template    = str_replace('{{name}}', $class_name, $stub);
         $file_system         = app(Filesystem::class);
-        $command_folder_path = base_path() . '/' . config('generator.module.root') . '/' . $package_name . '/src/app/Commands';
+        $package_path        = base_path() . '/' . config('generator.module.root') . '/' . $package_name;
+        $command_folder_path = $package_path . '/src/app/Commands';
+
+        if (!$file_system->isDirectory($package_path)) {
+            throw new Exception('Package does not exist');
+        }
 
         if ($command_names->count()) {
             $command_names = $command_names->map(function ($item) {
@@ -85,7 +90,7 @@ class CreateCommandCommand extends Command
             });
             $command_folder_path = $command_folder_path . '/' . implode('/', $command_names->toArray());
             if (!$file_system->isDirectory($command_folder_path)) {
-                $file_system->makeDirectory($command_folder_path);
+                $file_system->makeDirectory($command_folder_path, 0755, true);
             }
         }
 

@@ -64,4 +64,16 @@ class CreateTestTest extends CommandTestCase
             ->expectsOutPut('Test already existed')
             ->assertExitCode(1);
     }
+
+    /**
+     * @test
+     */
+    public function cannot_create_test_if_package_does_not_exist()
+    {
+        $test_name = 'example/example';
+
+        $this->artisan($this->getCreateTestCommand($test_name))
+            ->expectsOutPut('Package does not exist')
+            ->assertExitCode(1);
+    }
 }

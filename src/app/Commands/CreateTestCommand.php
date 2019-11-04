@@ -76,7 +76,12 @@ class CreateTestCommand extends Command
         $class_name       = Str::studly($test_names->pop());
         $test_template    = str_replace('{{name}}', $class_name, $stub);
         $file_system      = app(Filesystem::class);
-        $test_folder_path = base_path() . '/' . config('generator.module.root') . '/' . $package_name . '/tests';
+        $package_path     = base_path() . '/' . config('generator.module.root') . '/' . $package_name;
+        $test_folder_path = $package_path . '/tests';
+
+        if (!$file_system->isDirectory($package_path)) {
+            throw new Exception('Package does not exist');
+        }
 
         if ($test_names->count()) {
             $test_names = $test_names->map(function ($item) {
