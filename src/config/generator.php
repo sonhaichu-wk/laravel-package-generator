@@ -2,14 +2,15 @@
 
 return [
 
-    'disk'   => 'root',
+    'disk'        => 'root',
 
-    'module' => [
-        'root'        => 'modules',
-        'scaffolding' => 'generator/scaffolding',
+    'module'      => [
+        'root' => 'modules',
     ],
 
-    'stubs'  => [
+    'scaffolding' => base_path() . '/modules/generator/scaffolding',
+
+    'stubs'       => [
         'command'    => base_path() . '/modules/generator/stubs/Command.stub',
         'entity'     => base_path() . '/modules/generator/stubs/Entity.stub',
         'controller' => base_path() . '/modules/generator/stubs/Controller.stub',

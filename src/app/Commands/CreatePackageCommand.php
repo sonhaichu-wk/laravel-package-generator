@@ -5,6 +5,7 @@ namespace HaiCS\Laravel\Generator\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use \Exception;
 
 class CreatePackageCommand extends Command
 {
@@ -40,8 +41,17 @@ class CreatePackageCommand extends Command
     public function handle()
     {
         $name = $this->argument('name');
-        $this->makePackage($name);
+
+        try {
+            $this->makePackage($name);
+        } catch (Exception $e) {
+            $this->error($e->getMessage());
+            return 1;
+        }
+
         $this->info('Package generate successful');
+
+        return 0;
     }
 
     /**
@@ -52,8 +62,14 @@ class CreatePackageCommand extends Command
     protected function makePackage($name)
     {
         $package_name = Str::snake($name);
-        $dir          = config('generator.module.root') . '/' . config('generator.module.scaffolding');
-        $dest         = config('generator.module.root') . '/' . $package_name;
-        app(Filesystem::class)->copyDirectory($dir, $dest);
+        $dir          = config('generator.scaffolding');
+        $dest         = base_path() . '/' . config('generator.module.root') . '/' . $package_name;
+        $file_system  = app(Filesystem::class);
+
+        if ($file_system->isDirectory($dest)) {
+            throw new Exception('Package already existed');
+        }
+
+        $file_system->copyDirectory($dir, $dest);
     }
 }

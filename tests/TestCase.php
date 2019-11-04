@@ -34,9 +34,9 @@ class TestCase extends OrchestraTestCase
         ]);
         $app['config']->set('generator.disk', 'root');
         $app['config']->set('generator.module', [
-            'root'        => 'modules',
-            'scaffolding' => 'generator/scaffolding',
+            'root' => 'modules',
         ]);
+        $app['config']->set('generator.scaffolding', __DIR__ . '/../scaffolding');
         $app['config']->set('generator.stubs', [
             'command'    => __DIR__ . '/../stubs/Command.stub',
             'entity'     => __DIR__ . '/../stubs/Entity.stub',
