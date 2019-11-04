@@ -41,12 +41,12 @@ class CreateCommandCommand extends Command
      */
     public function handle()
     {
-        $package_name = $this->argument('packageName');
-        $command_name = $this->argument('commandName');
-        $stub         = $this->getStub();
+        $package_name  = $this->argument('packageName');
+        $command_names = collect(explode('/', $this->argument('commandName')));
+        $stub          = $this->getStub();
 
         try {
-            $result = $this->makeCommand($package_name, $command_name, $stub);
+            $result = $this->makeCommand($package_name, $command_names, $stub);
         } catch (Exception $e) {
             $this->error($e->getMessage());
             return 1;
@@ -72,13 +72,24 @@ class CreateCommandCommand extends Command
      *
      * @return void
      */
-    protected function makeCommand($package_name, $command_name, $stub)
+    protected function makeCommand($package_name, $command_names, $stub)
     {
-        $class_name       = Str::studly($command_name);
-        $command_template = str_replace('{{name}}', $class_name, $stub);
-        $file_path        = base_path() . '/' . config('generator.module.root') . '/' . $package_name . '/src/app/Commands/' . $class_name . 'Command.php';
-        $file_system      = app(Filesystem::class);
+        $class_name          = Str::studly($command_names->pop());
+        $command_template    = str_replace('{{name}}', $class_name, $stub);
+        $file_system         = app(Filesystem::class);
+        $command_folder_path = base_path() . '/' . config('generator.module.root') . '/' . $package_name . '/src/app/Commands';
 
+        if ($command_names->count()) {
+            $command_names = $command_names->map(function ($item) {
+                return Str::studly($item);
+            });
+            $command_folder_path = $command_folder_path . '/' . implode('/', $command_names->toArray());
+            if (!$file_system->isDirectory($command_folder_path)) {
+                $file_system->makeDirectory($command_folder_path);
+            }
+        }
+
+        $file_path = $command_folder_path . '/' . $class_name . 'Command.php';
         if ($file_system->isFile($file_path)) {
             throw new Exception('Command already existed');
         }

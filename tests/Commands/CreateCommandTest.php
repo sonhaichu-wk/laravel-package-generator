@@ -34,6 +34,21 @@ class CreateCommandTest extends CommandTestCase
     /**
      * @test
      */
+    public function can_create_command_recursively()
+    {
+        $command_name = 'example/example';
+
+        $this->artisan($this->getCreatePackageCommand())
+            ->assertExitCode(0);
+
+        $this->artisan($this->getCreateCommandCommand($command_name))
+            ->expectsOutPut('Test generate successful')
+            ->assertExitCode(0);
+    }
+
+    /**
+     * @test
+     */
     public function cannot_create_command_file_if_command_already_existed()
     {
         $command_name = 'test';
