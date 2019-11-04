@@ -36,6 +36,9 @@
         "test": [
             "vendor/bin/phpunit --color=always"
         ],
+        "test:command": [
+            "vendor/bin/phpunit --color=always --testsuite Command"
+        ],
         "coverage": [
             "vendor/bin/phpunit --coverage-html coverages"
         ]

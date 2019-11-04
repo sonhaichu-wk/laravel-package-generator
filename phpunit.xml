@@ -10,8 +10,8 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Generator Package Test Suite">
-            <directory>./tests</directory>
+        <testsuite name="Command">
+            <directory>./tests/Commands</directory>
         </testsuite>
     </testsuites>
     <filter>
