@@ -1,0 +1,13 @@
+<?php
+
+namespace HaiCS\Laravel\Generator\Http\Controllers;
+
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
+{
+    public function __construct()
+    {
+        $this->middleware('example.middleware', ['except' => []]);
+    }
+}
