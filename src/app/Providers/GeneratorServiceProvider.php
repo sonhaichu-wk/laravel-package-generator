@@ -9,6 +9,7 @@ use HaiCS\Laravel\Generator\Commands\CreatePackageCommand;
 use HaiCS\Laravel\Generator\Commands\CreateRepositoryCommand;
 use HaiCS\Laravel\Generator\Commands\CreateServiceProviderCommand;
 use HaiCS\Laravel\Generator\Commands\CreateTestCommand;
+use HaiCS\Laravel\Generator\Commands\CreateTransformerCommand;
 use HaiCS\Laravel\Generator\Commands\CreateValidatorCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -54,6 +55,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 CreateRepositoryCommand::class,
                 CreateValidatorCommand::class,
                 CreateServiceProviderCommand::class,
+                CreateTransformerCommand::class,
             ]);
         }
     }

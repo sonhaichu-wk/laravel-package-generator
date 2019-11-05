@@ -2,9 +2,9 @@
 
 namespace HaiCS\Laravel\Generator\Test\Commands;
 
-use HaiCS\Laravel\Generator\Test\TestCase;
+use HaiCS\Laravel\Generator\Test\Commands\CommandTestCase;
 
-class CreateTransformerTest extends TestCase
+class CreateTransformerTest extends CommandTestCase
 {
     /**
      * Get create transformer command to run
@@ -13,7 +13,7 @@ class CreateTransformerTest extends TestCase
      */
     protected function getCreateTransformerCommand($transformer_name)
     {
-        return 'make:package:entity ' . $this->packageName . ' ' . $transformer_name;
+        return 'make:package:transformer ' . $this->packageName . ' ' . $transformer_name;
     }
 
     /**
