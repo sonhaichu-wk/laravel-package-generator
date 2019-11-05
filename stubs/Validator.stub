@@ -1,0 +1,14 @@
+<?php
+
+namespace HaiCS\Laravel\Generator\Validators;
+
+use VCComponent\Laravel\Vicoders\Core\Validators\AbstractValidator;
+
+class {{name}}Validator extends AbstractValidator
+{
+    protected $rules = [
+        'EXAMPLE_RULE' => [
+            'email' => ['required'],
+        ],
+    ];
+}
