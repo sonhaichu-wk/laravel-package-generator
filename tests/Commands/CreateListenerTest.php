@@ -27,7 +27,7 @@ class CreateListenerTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateListenerCommand($listener_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Listener generate successful')
             ->assertExitCode(0);
     }
 
@@ -42,7 +42,7 @@ class CreateListenerTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateListenerCommand($listener_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Listener generate successful')
             ->assertExitCode(0);
     }
 
@@ -57,11 +57,11 @@ class CreateListenerTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateListenerCommand($listener_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Listener generate successful')
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateListenerCommand($listener_name))
-            ->expectsOutPut('Test already existed')
+            ->expectsOutPut('Listener already existed')
             ->assertExitCode(1);
     }
 
