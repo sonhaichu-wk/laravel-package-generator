@@ -22,6 +22,7 @@ return [
         'transformer'          => base_path() . '/modules/generator/stubs/Transformer.stub',
         'event'                => base_path() . '/modules/generator/stubs/Event.stub',
         'listener'             => base_path() . '/modules/generator/stubs/Listener.stub',
+        'notification'         => base_path() . '/modules/generator/stubs/Notification.stub',
     ],
 
 ];

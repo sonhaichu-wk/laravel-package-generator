@@ -7,6 +7,7 @@ use HaiCS\Laravel\Generator\Commands\CreateControllerCommand;
 use HaiCS\Laravel\Generator\Commands\CreateEntityCommand;
 use HaiCS\Laravel\Generator\Commands\CreateEventCommand;
 use HaiCS\Laravel\Generator\Commands\CreateListenerCommand;
+use HaiCS\Laravel\Generator\Commands\CreateNotificationCommand;
 use HaiCS\Laravel\Generator\Commands\CreatePackageCommand;
 use HaiCS\Laravel\Generator\Commands\CreateRepositoryCommand;
 use HaiCS\Laravel\Generator\Commands\CreateServiceProviderCommand;
@@ -60,6 +61,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 CreateTransformerCommand::class,
                 CreateEventCommand::class,
                 CreateListenerCommand::class,
+                CreateNotificationCommand::class,
             ]);
         }
     }
