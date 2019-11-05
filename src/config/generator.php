@@ -20,6 +20,7 @@ return [
         'test'                 => base_path() . '/modules/generator/stubs/Test.stub',
         'provider'             => base_path() . '/modules/generator/stubs/ServiceProvider.stub',
         'transformer'          => base_path() . '/modules/generator/stubs/Transformer.stub',
+        'event'                => base_path() . '/modules/generator/stubs/Event.stub',
     ],
 
 ];

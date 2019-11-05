@@ -5,6 +5,7 @@ namespace HaiCS\Laravel\Generator\Providers;
 use HaiCS\Laravel\Generator\Commands\CreateCommandCommand;
 use HaiCS\Laravel\Generator\Commands\CreateControllerCommand;
 use HaiCS\Laravel\Generator\Commands\CreateEntityCommand;
+use HaiCS\Laravel\Generator\Commands\CreateEventCommand;
 use HaiCS\Laravel\Generator\Commands\CreatePackageCommand;
 use HaiCS\Laravel\Generator\Commands\CreateRepositoryCommand;
 use HaiCS\Laravel\Generator\Commands\CreateServiceProviderCommand;
@@ -56,6 +57,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 CreateValidatorCommand::class,
                 CreateServiceProviderCommand::class,
                 CreateTransformerCommand::class,
+                CreateEventCommand::class,
             ]);
         }
     }
