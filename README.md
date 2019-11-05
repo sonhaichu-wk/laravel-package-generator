@@ -12,7 +12,7 @@
 - Change `composer.json` file:
 
 ```json
-"require": {
+"require-dev": {
     ...
     "sonhaichu/generator": "@dev"
 },
