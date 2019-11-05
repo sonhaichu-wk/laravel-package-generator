@@ -6,6 +6,7 @@ use HaiCS\Laravel\Generator\Commands\CreateCommandCommand;
 use HaiCS\Laravel\Generator\Commands\CreateControllerCommand;
 use HaiCS\Laravel\Generator\Commands\CreateEntityCommand;
 use HaiCS\Laravel\Generator\Commands\CreatePackageCommand;
+use HaiCS\Laravel\Generator\Commands\CreateRepositoryCommand;
 use HaiCS\Laravel\Generator\Commands\CreateTestCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -48,6 +49,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 CreateEntityCommand::class,
                 CreateTestCommand::class,
                 CreateControllerCommand::class,
+                CreateRepositoryCommand::class,
             ]);
         }
     }

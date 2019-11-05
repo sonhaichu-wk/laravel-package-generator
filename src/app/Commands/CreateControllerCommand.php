@@ -74,7 +74,7 @@ class CreateControllerCommand extends Command
     protected function makeEntity($package_name, $controller_names, $stub)
     {
         $class_name             = Str::studly($controller_names->pop());
-        $entity_template        = str_replace('{{name}}', $class_name, $stub);
+        $controller_template    = str_replace('{{name}}', $class_name, $stub);
         $file_system            = app(Filesystem::class);
         $package_path           = base_path() . '/' . config('generator.module.root') . '/' . $package_name;
         $controller_folder_path = $package_path . '/src/app/Http/Controllers';
@@ -98,6 +98,6 @@ class CreateControllerCommand extends Command
             throw new Exception('Controller already existed');
         }
 
-        $file_system->put($file_path, $entity_template);
+        $file_system->put($file_path, $controller_template);
     }
 }

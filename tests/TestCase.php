@@ -38,12 +38,14 @@ class TestCase extends OrchestraTestCase
         ]);
         $app['config']->set('generator.scaffolding', __DIR__ . '/../scaffolding');
         $app['config']->set('generator.stubs', [
-            'command'    => __DIR__ . '/../stubs/Command.stub',
-            'entity'     => __DIR__ . '/../stubs/Entity.stub',
-            'controller' => __DIR__ . '/../stubs/Controller.stub',
-            'repository' => __DIR__ . '/../stubs/Repository.stub',
-            'validator'  => __DIR__ . '/../stubs/Validator.stub',
-            'test'       => __DIR__ . '/../stubs/Test.stub',
+            'command'              => __DIR__ . '/../stubs/Command.stub',
+            'entity'               => __DIR__ . '/../stubs/Entity.stub',
+            'controller'           => __DIR__ . '/../stubs/Controller.stub',
+            'repository_interface' => __DIR__ . '/../stubs/Repository.stub',
+            'repository_eloquent'  => __DIR__ . '/../stubs/RepositoryEloquent.stub',
+            'repository'           => __DIR__ . '/../stubs/Repository.stub',
+            'validator'            => __DIR__ . '/../stubs/Validator.stub',
+            'test'                 => __DIR__ . '/../stubs/Test.stub',
         ]);
     }
 }
