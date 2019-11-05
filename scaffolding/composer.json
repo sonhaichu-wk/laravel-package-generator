@@ -34,7 +34,7 @@
     },
     "scripts": {
         "test": [
-            "vendor/bin/phpunit --color=always --"
+            "vendor/bin/phpunit --color=always"
         ],
         "coverage": [
             "vendor/bin/phpunit --coverage-html coverages"
