@@ -11,7 +11,7 @@
 - Copy package source code to `/modules` folder.
 - Change `composer.json` file:
 
-```json
+```
 "require-dev": {
     ...
     "sonhaichu/generator": "@dev"
@@ -26,6 +26,7 @@
 ```
 
 - Run `composer install` command.
+- Run this command `php artisan vendor:publish` and select `HaiCS\Laravel\Generator\Providers\GeneratorServiceProvider`.
 
 ## Configuration
 
