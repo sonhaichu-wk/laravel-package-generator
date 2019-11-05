@@ -7,9 +7,9 @@
 
 ## Installation
 
-- Create `/modules` in laravel framework.
-- Copy package source code to `/modules` folder.
-- Change `composer.json` file:
+-   Create `/modules` in laravel framework.
+-   Copy package source code to `/modules` folder.
+-   Change `composer.json` file:
 
 ```
 "require-dev": {
@@ -25,8 +25,8 @@
 ]
 ```
 
-- Run `composer install` command.
-- Run this command `php artisan vendor:publish` and select `HaiCS\Laravel\Generator\Providers\GeneratorServiceProvider`.
+-   Run `composer install` command.
+-   Run this command `php artisan vendor:publish` and select `HaiCS\Laravel\Generator\Providers\GeneratorServiceProvider`.
 
 ## Configuration
 
@@ -56,3 +56,4 @@ Add this content to `config/filesystems.php`
 | `php artisan make:package:repository {packageName} {repositoryName}` | Create a repositoy class and interface in package |
 | `php artisan make:package:validator {packageName} {validatorName}`   | Create a validator class in package               |
 | `php artisan make:package:command {packageName} {commandName}`       | Create a command class in package                 |
+| `php artisan make:package:provider {packageName} {providerName}`     | Create a service provider class in package        |

@@ -46,6 +46,7 @@ class TestCase extends OrchestraTestCase
             'repository'           => __DIR__ . '/../stubs/Repository.stub',
             'validator'            => __DIR__ . '/../stubs/Validator.stub',
             'test'                 => __DIR__ . '/../stubs/Test.stub',
+            'provider'             => __DIR__ . '/../stubs/ServiceProvider.stub',
         ]);
     }
 }

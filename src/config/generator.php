@@ -18,6 +18,7 @@ return [
         'repository_eloquent'  => base_path() . '/modules/generator/stubs/RepositoryEloquent.stub',
         'validator'            => base_path() . '/modules/generator/stubs/Validator.stub',
         'test'                 => base_path() . '/modules/generator/stubs/Test.stub',
+        'provider'             => base_path() . '/modules/generator/stubs/ServiceProvider.stub',
     ],
 
 ];
