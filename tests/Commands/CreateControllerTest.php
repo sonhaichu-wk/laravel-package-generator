@@ -42,7 +42,7 @@ class CreateControllerTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateControllerCommand($controller_name))
-            ->expectsOutput('Test generate successful')
+            ->expectsOutput('Controller generate successful')
             ->assertExitCode(0);
     }
 

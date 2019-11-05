@@ -27,7 +27,7 @@ class CreateEntityTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateEntityCommand($entity_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Entity generate successful')
             ->assertExitCode(0);
     }
 
@@ -42,7 +42,7 @@ class CreateEntityTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateEntityCommand($entity_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Entity generate successful')
             ->assertExitCode(0);
     }
 
@@ -57,11 +57,11 @@ class CreateEntityTest extends CommandTestCase
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateEntityCommand($entity_name))
-            ->expectsOutPut('Test generate successful')
+            ->expectsOutPut('Entity generate successful')
             ->assertExitCode(0);
 
         $this->artisan($this->getCreateEntityCommand($entity_name))
-            ->expectsOutPut('Test already existed')
+            ->expectsOutPut('Entity already existed')
             ->assertExitCode(1);
     }
 
