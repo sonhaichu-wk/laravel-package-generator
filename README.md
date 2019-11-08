@@ -47,13 +47,17 @@ Add this content to `config/filesystems.php`
 
 ## Commands
 
-| Command                                                              | Description                                       |
-| -------------------------------------------------------------------- | ------------------------------------------------- |
-| `php artisan make:package {name}`                                    | Create a package scaffolding folder               |
-| `php artisan make:package:test {packageName} {testName}`             | Create a test class in package                    |
-| `php artisan make:package:entity {packageName} {entityName}`         | Create an entity class in package                 |
-| `php artisan make:package:controller {packageName} {controllerName}` | Create a controller class in package              |
-| `php artisan make:package:repository {packageName} {repositoryName}` | Create a repositoy class and interface in package |
-| `php artisan make:package:validator {packageName} {validatorName}`   | Create a validator class in package               |
-| `php artisan make:package:command {packageName} {commandName}`       | Create a command class in package                 |
-| `php artisan make:package:provider {packageName} {providerName}`     | Create a service provider class in package        |
+| Command                                                                  | Description                                       |
+| ------------------------------------------------------------------------ | ------------------------------------------------- |
+| `php artisan make:package {name}`                                        | Create a package scaffolding folder               |
+| `php artisan make:package:test {packageName} {testName}`                 | Create a test class in package                    |
+| `php artisan make:package:entity {packageName} {entityName}`             | Create an entity class in package                 |
+| `php artisan make:package:controller {packageName} {controllerName}`     | Create a controller class in package              |
+| `php artisan make:package:repository {packageName} {repositoryName}`     | Create a repositoy class and interface in package |
+| `php artisan make:package:validator {packageName} {validatorName}`       | Create a validator class in package               |
+| `php artisan make:package:command {packageName} {commandName}`           | Create a command class in package                 |
+| `php artisan make:package:provider {packageName} {providerName}`         | Create a service provider class in package        |
+| `php artisan make:package:transformer {packageName} {transformerName}`   | Create a transformer class in package             |
+| `php artisan make:package:event {packageName} {eventName}`               | Create an event class in package                  |
+| `php artisan make:package:listener {packageName} {listenerName}`         | Create a listener class in package                |
+| `php artisan make:package:notification {packageName} {notificationName}` | Create a notification class in package            |
