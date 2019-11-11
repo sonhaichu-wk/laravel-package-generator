@@ -93,7 +93,7 @@ class CreateEntityCommand extends Command
             }
         }
 
-        $file_path = $entity_folder_path . '/' . $class_name . 'Entity.php';
+        $file_path = $entity_folder_path . '/' . $class_name . '.php';
         if ($file_system->isFile($file_path)) {
             throw new Exception('Entity already existed');
         }
