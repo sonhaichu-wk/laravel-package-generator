@@ -61,3 +61,4 @@ Add this content to `config/filesystems.php`
 | `php artisan make:package:event {packageName} {eventName}`               | Create an event class in package                  |
 | `php artisan make:package:listener {packageName} {listenerName}`         | Create a listener class in package                |
 | `php artisan make:package:notification {packageName} {notificationName}` | Create a notification class in package            |
+| `php artisan make:package:migration {packageName} {migrationName}`       | Create a migration file in package                |

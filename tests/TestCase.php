@@ -51,6 +51,7 @@ class TestCase extends OrchestraTestCase
             'event'                => __DIR__ . '/../stubs/Event.stub',
             'listener'             => __DIR__ . '/../stubs/Listener.stub',
             'notification'         => __DIR__ . '/../stubs/Notification.stub',
+            'migration'            => __DIR__ . '/../stubs/Migration.stub',
         ]);
     }
 }
